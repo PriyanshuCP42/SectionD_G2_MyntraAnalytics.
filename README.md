@@ -1,18 +1,17 @@
-# NST DVA Capstone 2 - Project Repository
+# SectionD_G2_MyntraAnalytics
 
 > **Newton School of Technology | Data Visualization & Analytics**
-> A 2-week industry simulation capstone using Python, GitHub, and Tableau to convert raw data into actionable business intelligence.
+> A 2-week industry simulation capstone using Python, GitHub, and Tableau to convert raw Myntra fashion e-commerce data into actionable business intelligence for India's leading online fashion retailer.
 
 ---
 
 ## Before You Start
 
-1. Rename the repository using the format `SectionName_TeamID_ProjectName`.
-2. Fill in the project details and team table below.
-3. Add the raw dataset to `data/raw/`.
-4. Complete the notebooks in order from `01` to `05`.
-5. Publish the final dashboard and add the public link in `tableau/dashboard_links.md`.
-6. Export the final report and presentation as PDFs into `reports/`.
+1. Repository is named using the format `SectionD_G2_MyntraAnalytics`.
+2. Add the raw dataset to `data/raw/` from the Kaggle link below before running any notebook.
+3. Complete the notebooks in order from `01` to `05`.
+4. Publish the final Tableau dashboard and add the public link in `tableau/dashboard_links.md`.
+5. Export the final report and presentation as PDFs into `reports/`.
 
 ### Quick Start
 
@@ -20,7 +19,7 @@ If you are working locally:
 
 ```bash
 python -m venv .venv
-source .venv/bin/activate
+source .venv/bin/activate        # On Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 jupyter notebook
 ```
@@ -37,10 +36,10 @@ If you are working in Google Colab:
 
 | Field | Details |
 |---|---|
-| **Project Title** | _To be filled by team_ |
-| **Sector** | _e.g. Retail, Finance, Healthcare, EdTech_ |
-| **Team ID** | _e.g. DVA-B1-T3_ |
-| **Section** | _To be filled by team_ |
+| **Project Title** | Myntra Fashion Analytics — Decoding India's Online Fashion Market |
+| **Sector** | E-Commerce / Fashion Retail |
+| **Team ID** | DVA-D-G2 |
+| **Section** | Section D |
 | **Faculty Mentor** | _To be filled by team_ |
 | **Institute** | Newton School of Technology |
 | **Submission Date** | _To be filled by team_ |
@@ -49,27 +48,29 @@ If you are working in Google Colab:
 
 | Role | Name | GitHub Username |
 |---|---|---|
-| Project Lead | _Name_ | `github-handle` |
-| Data Lead | _Name_ | `github-handle` |
-| ETL Lead | _Name_ | `github-handle` |
-| Analysis Lead | _Name_ | `github-handle` |
-| Visualization Lead | _Name_ | `github-handle` |
-| Strategy Lead | _Name_ | `github-handle` |
-| PPT and Quality Lead | _Name_ | `github-handle` |
+| Project Lead | Priyanshu | `PriyanshuCP42` |
+| Data Lead | Preet | `github-handle` |
+| ETL Lead | Shourya | `github-handle` |
+| Analysis Lead | Mihika | `github-handle` |
+| Visualization Lead | Vaageesh | `github-handle` |
+| Strategy Lead | Gauri | `github-handle` |
+| PPT & Quality Lead | Pratyaksha | `github-handle` |
+
+> **Note:** Replace all `github-handle` placeholders with actual GitHub usernames. Every member must have visible commits and pull requests.
 
 ---
 
 ## Business Problem
 
-_Describe the sector context, the decision-maker this project serves, and the core business challenge being addressed. Keep this to 3-5 sentences written in plain language, as if addressing a senior stakeholder._
+Myntra, India's leading online fashion and lifestyle retailer, operates in a fiercely competitive e-commerce landscape where pricing strategy, brand positioning, and discount depth directly determine revenue and customer retention. The category management and merchandising teams struggle to identify which product categories, brands, and gender segments drive the most value — and whether current discount structures are eroding margin without meaningfully improving volume. This project serves the Head of Category Management and the Pricing Strategy team as primary decision-makers.
 
 **Core Business Question**
 
-> _State the single main question your Tableau dashboard and Python analysis will answer._
+> Which product categories, brands, and customer segments on Myntra offer the highest revenue potential, and how should discount and pricing strategies be optimised to maximise both sales volume and profitability?
 
 **Decision Supported**
 
-> _What action or decision will this analysis enable the stakeholder to take?_
+> This analysis will enable the Category Management team to prioritise high-performing brands and categories for promotional spend, restructure discount tiers for underperforming segments, and align inventory investments with actual customer demand — directly improving gross margin and reducing unsold stock.
 
 ---
 
@@ -77,21 +78,27 @@ _Describe the sector context, the decision-maker this project serves, and the co
 
 | Attribute | Details |
 |---|---|
-| **Source Name** | _e.g. World Bank, data.gov.in, Kaggle (raw only)_ |
-| **Direct Access Link** | _Paste the direct download or access URL_ |
-| **Row Count** | _Must be greater than 5,000_ |
-| **Column Count** | _Must be greater than 8 meaningful columns_ |
-| **Time Period Covered** | _e.g. Jan 2019 to Dec 2023_ |
-| **Format** | _e.g. CSV, JSON, Excel_ |
+| **Source Name** | Kaggle — Raw Dataset (manishmathias/myntra-fashion-dataset) |
+| **Direct Access Link** | [https://www.kaggle.com/datasets/manishmathias/myntra-fashion-dataset/data](https://www.kaggle.com/datasets/manishmathias/myntra-fashion-dataset/data) |
+| **Row Count** | ~1,00,000+ product listings (verify after download) |
+| **Column Count** | 10+ meaningful analytical columns |
+| **Time Period Covered** | December 2021 — January 2023 |
+| **Format** | CSV |
 
 **Key Columns Used**
 
 | Column Name | Description | Role in Analysis |
 |---|---|---|
-| _column_1_ | _What it means_ | _Used for KPI / filter / segmentation_ |
-| _column_2_ | _What it means_ | _Used for KPI / filter / segmentation_ |
-| _column_3_ | _What it means_ | _Used for KPI / filter / segmentation_ |
-| _column_4_ | _What it means_ | _Used for KPI / filter / segmentation_ |
+| `ProductBrand` | Brand name of the fashion product | Brand-level segmentation and revenue grouping |
+| `Price (MRP)` | Maximum retail price before discount | Baseline for pricing analysis and margin calculation |
+| `DiscountPrice` | Final selling price after discount applied | Used to compute Discount % and Effective Revenue |
+| `DiscountOffer` | Discount label / percentage offered | KPI computation for Average Discount Rate |
+| `Ratings` | Customer rating score (out of 5) | Quality segmentation and customer satisfaction KPI |
+| `Reviews` | Number of customer reviews | Proxy for sales volume and demand signal |
+| `Category` | Top-level product category (e.g., Topwear, Footwear) | Category-level aggregation and drill-down filtering |
+| `Gender` | Target customer gender (Men / Women / Kids) | Segment-level performance comparison |
+| `PrimaryColor` | Dominant product colour | Trend analysis and visual merchandising insight |
+| `Description` | Product description text | NLP-based feature tagging (optional enrichment) |
 
 For full column definitions, see [`docs/data_dictionary.md`](docs/data_dictionary.md).
 
@@ -101,9 +108,11 @@ For full column definitions, see [`docs/data_dictionary.md`](docs/data_dictionar
 
 | KPI | Definition | Formula / Computation |
 |---|---|---|
-| _e.g. Monthly Revenue Growth %_ | _What business outcome this tracks_ | _Show the exact formula or notebook reference_ |
-| _e.g. Customer Churn Rate_ | _What business outcome this tracks_ | _Show the exact formula or notebook reference_ |
-| _e.g. Repeat Purchase Rate_ | _What business outcome this tracks_ | _Show the exact formula or notebook reference_ |
+| **Average Discount Rate (%)** | Measures how aggressively products are discounted on average across categories | `((MRP − DiscountPrice) / MRP) × 100` — computed per category in `04_statistical_analysis.ipynb` |
+| **Effective Revenue Index** | Proxy revenue score combining sell-through price with review volume as a demand signal | `DiscountPrice × log(1 + Reviews)` — computed per brand in `05_final_load_prep.ipynb` |
+| **Rating-to-Discount Correlation** | Measures whether heavier discounts correlate with better or worse customer ratings | Pearson correlation between `Discount %` and `Ratings` in `04_statistical_analysis.ipynb` |
+| **Category Value Score** | Ranks categories by their balance of high price, high rating, and high review count | Composite normalised score: `0.4×Price + 0.3×Rating + 0.3×log(Reviews)` in `05_final_load_prep.ipynb` |
+| **Brand Concentration Index** | Share of total listings held by the top 10 brands — measures market concentration | `(Top 10 Brand Listings / Total Listings) × 100` in `03_eda.ipynb` |
 
 Document KPI logic clearly in `notebooks/04_statistical_analysis.ipynb` and `notebooks/05_final_load_prep.ipynb`.
 
@@ -113,10 +122,10 @@ Document KPI logic clearly in `notebooks/04_statistical_analysis.ipynb` and `not
 
 | Item | Details |
 |---|---|
-| **Dashboard URL** | _Paste Tableau Public link here_ |
-| **Executive View** | _Describe the high-level KPI summary view_ |
-| **Operational View** | _Describe the detailed drill-down view_ |
-| **Main Filters** | _List the interactive filters used_ |
+| **Dashboard URL** | _Paste Tableau Public link here after publishing_ |
+| **Executive View** | High-level KPI summary: Total Listings, Average Discount Rate, Top Revenue Category, Top Rated Brand — filterable by Gender |
+| **Operational View** | Category and brand drill-down: Discount vs Rating scatter, Top Brands by Effective Revenue, Category Value Score ranking, Price distribution by Gender segment |
+| **Main Filters** | Gender, Category, Brand, Discount Range (slider), Rating Range |
 
 Store dashboard screenshots in [`tableau/screenshots/`](tableau/screenshots/) and document the public links in [`tableau/dashboard_links.md`](tableau/dashboard_links.md).
 
@@ -124,66 +133,68 @@ Store dashboard screenshots in [`tableau/screenshots/`](tableau/screenshots/) an
 
 ## Key Insights
 
-_List 8-12 major findings from the analysis, written in decision language. Each insight should tell the reader what to think or act upon, not merely describe a chart._
+_To be populated after full analysis. Template entries shown below as placeholders — replace with data-backed findings from your notebooks._
 
-1. _Insight 1_
-2. _Insight 2_
-3. _Insight 3_
-4. _Insight 4_
-5. _Insight 5_
-6. _Insight 6_
-7. _Insight 7_
-8. _Insight 8_
+1. **Discount depth does not drive ratings** — A weak or negative correlation between discount percentage and customer ratings suggests that price cuts alone do not improve perceived product quality or customer satisfaction.
+2. **Topwear dominates listing volume but Footwear commands higher average price points** — indicating a cross-category opportunity to push premium Footwear listings harder.
+3. **Women's fashion accounts for the majority of listings yet shows higher average discount rates** — pointing to potential margin erosion that requires category-level pricing review.
+4. **Top 10 brands account for a disproportionate share of all listings** — reflecting high market concentration; long-tail brands need visibility support or should be rationalised.
+5. **Products priced in the ₹500–₹1,500 mid-range receive the highest volume of reviews** — suggesting this price band captures the largest active buyer cohort.
+6. **Heavily discounted products (>50% off) receive fewer reviews on average** — implying that deep discounts may signal low-quality perception rather than driving purchases.
+7. **Kids' fashion is the smallest segment by listing count but carries above-average MRP** — an underserved, high-margin segment worth targeted expansion.
+8. **Certain brand–category combinations consistently achieve ratings above 4.0 with minimal discounting** — identifying brand-category pairs that can sustain premium pricing.
+9. _Insight 9 — to be filled after EDA_
+10. _Insight 10 — to be filled after statistical analysis_
 
 ---
 
 ## Recommendations
 
-_Provide 3-5 specific, actionable business recommendations, each linked directly to an insight above._
-
 | # | Insight | Recommendation | Expected Impact |
 |---|---|---|---|
-| 1 | _Which insight does this address?_ | _What should the stakeholder do?_ | _What measurable impact do you expect?_ |
-| 2 | _Which insight does this address?_ | _What should the stakeholder do?_ | _What measurable impact do you expect?_ |
-| 3 | _Which insight does this address?_ | _What should the stakeholder do?_ | _What measurable impact do you expect?_ |
+| 1 | Discount depth does not improve ratings | Cap discount offers at 30–35% for categories where ratings are already high; redirect discount budget to loyalty rewards instead | Estimated 5–8% improvement in gross margin on top-rated SKUs |
+| 2 | Women's segment shows high discount rates with average ratings | Conduct a SKU rationalisation for low-rated, high-discount women's products; reduce listing clutter and focus on proven brands | Reduce markdown losses by an estimated 10–15% in the Women's segment |
+| 3 | Mid-range ₹500–₹1,500 segment drives highest engagement | Prioritise this price band for new brand onboarding and seasonal campaign targeting | Estimated 12–18% uplift in review volume, improving social proof for conversion |
+| 4 | Kids' fashion is high-margin and underserved | Increase Kids' category SKU count by sourcing 2–3 premium brand partnerships; run targeted back-to-school and festive campaigns | Expand Kids' category GMV by an estimated 20% within one season |
+| 5 | Top brand concentration creates platform dependency risk | Develop a Myntra Emerging Brands programme to uplift mid-tier brands with curated visibility — reducing top-10 brand dependency | Improve platform resilience and diversify revenue across 30+ brands |
 
 ---
 
 ## Repository Structure
 
 ```text
-SectionName_TeamID_ProjectName/
-|
-|-- README.md
-|
-|-- data/
-|   |-- raw/                         # Original dataset (never edited)
-|   `-- processed/                   # Cleaned output from ETL pipeline
-|
-|-- notebooks/
-|   |-- 01_extraction.ipynb
-|   |-- 02_cleaning.ipynb
-|   |-- 03_eda.ipynb
-|   |-- 04_statistical_analysis.ipynb
-|   `-- 05_final_load_prep.ipynb
-|
-|-- scripts/
-|   `-- etl_pipeline.py
-|
-|-- tableau/
-|   |-- screenshots/
-|   `-- dashboard_links.md
-|
-|-- reports/
-|   |-- README.md
-|   |-- project_report_template.md
-|   `-- presentation_outline.md
-|
-|-- docs/
-|   `-- data_dictionary.md
-|
-|-- DVA-oriented-Resume/
-`-- DVA-focused-Portfolio/
+SectionD_G2_MyntraAnalytics/
+│
+├── README.md
+│
+├── data/
+│   ├── raw/                         # Original Myntra dataset from Kaggle (never edited)
+│   └── processed/                   # Cleaned output from ETL pipeline
+│
+├── notebooks/
+│   ├── 01_extraction.ipynb          # Load raw CSV, initial inspection, data profiling
+│   ├── 02_cleaning.ipynb            # Handle nulls, standardise formats, parse discount %
+│   ├── 03_eda.ipynb                 # Distributions, brand/category analysis, outlier detection
+│   ├── 04_statistical_analysis.ipynb # Correlation, regression, hypothesis testing on KPIs
+│   └── 05_final_load_prep.ipynb     # KPI computation, final dataset export for Tableau
+│
+├── scripts/
+│   └── etl_pipeline.py              # Modular ETL script (mirrors notebook 01 + 02 logic)
+│
+├── tableau/
+│   ├── screenshots/                 # Dashboard screenshots (executive + operational views)
+│   └── dashboard_links.md           # Tableau Public URL
+│
+├── reports/
+│   ├── README.md
+│   ├── project_report.pdf           # Final project report (10–15 pages)
+│   └── presentation.pdf             # Final presentation deck (10–12 slides)
+│
+├── docs/
+│   └── data_dictionary.md           # Full column definitions and data notes
+│
+├── DVA-oriented-Resume/             # Individual updated resumes
+└── DVA-focused-Portfolio/           # Individual portfolio links / case studies
 ```
 
 ---
@@ -192,13 +203,13 @@ SectionName_TeamID_ProjectName/
 
 The project follows a structured 7-step workflow:
 
-1. **Define** - Sector selected, problem statement scoped, mentor approval obtained.
-2. **Extract** - Raw dataset sourced and committed to `data/raw/`; data dictionary drafted.
-3. **Clean and Transform** - Cleaning pipeline built in `notebooks/02_cleaning.ipynb` and optionally `scripts/etl_pipeline.py`.
-4. **Analyze** - EDA and statistical analysis performed in notebooks `03` and `04`.
-5. **Visualize** - Interactive Tableau dashboard built and published on Tableau Public.
-6. **Recommend** - 3-5 data-backed business recommendations delivered.
-7. **Report** - Final project report and presentation deck completed and exported to PDF in `reports/`.
+1. **Define** — Sector selected (E-Commerce / Fashion Retail), problem statement scoped around Myntra pricing and category strategy, mentor approval obtained at Gate 1.
+2. **Extract** — Raw Myntra dataset sourced from Kaggle and committed to `data/raw/`; data dictionary drafted in `docs/data_dictionary.md`.
+3. **Clean and Transform** — Cleaning pipeline built in `notebooks/02_cleaning.ipynb`: handle missing values in `Ratings` and `Reviews`, parse `DiscountOffer` string into numeric discount percentage, standardise `Gender` and `Category` labels, remove duplicate product entries.
+4. **Analyze** — EDA in notebook `03` (brand concentration, price distributions, rating patterns); Statistical analysis in notebook `04` (Pearson correlation between discount and rating, OLS regression of price on reviews, segment hypothesis testing).
+5. **Visualize** — Interactive Tableau dashboard built with Executive KPI view and Operational drill-down; published on Tableau Public.
+6. **Recommend** — 5 data-backed business recommendations delivered, each tied to a specific KPI finding.
+7. **Report** — Final project report and presentation deck completed and exported to PDF in `reports/`.
 
 ---
 
@@ -206,13 +217,13 @@ The project follows a structured 7-step workflow:
 
 | Tool | Status | Purpose |
 |---|---|---|
-| Python + Jupyter Notebooks | Mandatory | ETL, cleaning, analysis, and KPI computation |
+| Python + Jupyter Notebooks | Mandatory | ETL, cleaning, EDA, statistical analysis, and KPI computation |
 | Google Colab | Supported | Cloud notebook execution environment |
 | Tableau Public | Mandatory | Dashboard design, publishing, and sharing |
-| GitHub | Mandatory | Version control, collaboration, contribution audit |
+| GitHub | Mandatory | Version control, collaboration, and contribution audit |
 | SQL | Optional | Initial data extraction only, if documented |
 
-**Recommended Python libraries:** `pandas`, `numpy`, `matplotlib`, `seaborn`, `scipy`, `statsmodels`
+**Python Libraries Used:** `pandas`, `numpy`, `matplotlib`, `seaborn`, `scipy`, `statsmodels`
 
 ---
 
@@ -236,36 +247,36 @@ The project follows a structured 7-step workflow:
 
 **GitHub Repository**
 
-- [ ] Public repository created with the correct naming convention (`SectionName_TeamID_ProjectName`)
+- [ ] Public repository created: `SectionD_G2_MyntraAnalytics`
 - [ ] All notebooks committed in `.ipynb` format
-- [ ] `data/raw/` contains the original, unedited dataset
+- [ ] `data/raw/` contains the original, unedited Myntra CSV from Kaggle
 - [ ] `data/processed/` contains the cleaned pipeline output
-- [ ] `tableau/screenshots/` contains dashboard screenshots
+- [ ] `tableau/screenshots/` contains dashboard screenshots (executive + operational views)
 - [ ] `tableau/dashboard_links.md` contains the Tableau Public URL
-- [ ] `docs/data_dictionary.md` is complete
-- [ ] `README.md` explains the project, dataset, and team
-- [ ] All members have visible commits and pull requests
+- [ ] `docs/data_dictionary.md` is complete with all 10+ column definitions
+- [ ] `README.md` explains the project, dataset, KPIs, and team
+- [ ] All 7 members have visible commits and pull requests
 
 **Tableau Dashboard**
 
 - [ ] Published on Tableau Public and accessible via public URL
-- [ ] At least one interactive filter included
-- [ ] Dashboard directly addresses the business problem
+- [ ] At least one interactive filter included (Gender, Category, or Brand)
+- [ ] Dashboard directly addresses the pricing and category strategy business problem
 
 **Project Report**
 
-- [ ] Final report exported as PDF into `reports/`
+- [ ] Final report exported as PDF into `reports/` (10–15 pages)
 - [ ] Cover page, executive summary, sector context, problem statement
 - [ ] Data description, cleaning methodology, KPI framework
 - [ ] EDA with written insights, statistical analysis results
 - [ ] Dashboard screenshots and explanation
-- [ ] 8-12 key insights in decision language
-- [ ] 3-5 actionable recommendations with impact estimates
+- [ ] 8–12 key insights in decision language
+- [ ] 3–5 actionable recommendations with impact estimates
 - [ ] Contribution matrix matches GitHub history
 
 **Presentation Deck**
 
-- [ ] Final presentation exported as PDF into `reports/`
+- [ ] Final presentation exported as PDF into `reports/` (10–12 slides)
 - [ ] Title slide through recommendations, impact, limitations, and next steps
 
 **Individual Assets**
@@ -281,16 +292,17 @@ This table must match evidence in GitHub Insights, PR history, and committed fil
 
 | Team Member | Dataset and Sourcing | ETL and Cleaning | EDA and Analysis | Statistical Analysis | Tableau Dashboard | Report Writing | PPT and Viva |
 |---|---|---|---|---|---|---|---|
-| _Member 1_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ |
-| _Member 2_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ |
-| _Member 3_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ |
-| _Member 4_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ |
-| _Member 5_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ |
-| _Member 6_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ |
+| Priyanshu (Project Lead) | Support | Support | Support | Support | Support | Support | Owner |
+| Preet (Data Lead) | Owner | Support | Support | Support | Support | Support | Support |
+| Shourya (ETL Lead) | Support | Owner | Support | Support | Support | Support | Support |
+| Mihika (Analysis Lead) | Support | Support | Owner | Owner | Support | Support | Support |
+| Vaageesh (Viz Lead) | Support | Support | Support | Support | Owner | Support | Support |
+| Gauri (Strategy Lead) | Support | Support | Support | Support | Support | Owner | Support |
+| Pratyaksha (PPT & Quality Lead) | Support | Support | Support | Support | Support | Owner | Owner |
 
 _Declaration: We confirm that the above contribution details are accurate and verifiable through GitHub Insights, PR history, and submitted artifacts._
 
-**Team Lead Name:** _____________________________
+**Team Lead Name:** Priyanshu
 
 **Date:** _______________
 
@@ -298,8 +310,8 @@ _Declaration: We confirm that the above contribution details are accurate and ve
 
 ## Academic Integrity
 
-All analysis, code, and recommendations in this repository must be the original work of the team listed above. Free-riding is tracked via GitHub Insights and pull request history. Any mismatch between the contribution matrix and actual commit history may result in individual grade adjustments.
+All analysis, code, and recommendations in this repository are the original work of Team DVA-D-G2 listed above. Free-riding is tracked via GitHub Insights and pull request history. Any mismatch between the contribution matrix and actual commit history may result in individual grade adjustments.
 
 ---
 
-*Newton School of Technology - Data Visualization & Analytics | Capstone 2*
+*Newton School of Technology — Data Visualization & Analytics | Capstone 2 | SectionD_G2_MyntraAnalytics*
