@@ -19,11 +19,11 @@
 |---|---|---|
 | Project Lead | Priyanshu | `PriyanshuCP42` |
 | Data Lead | Preet | `github-handle` |
-| ETL Lead | Shourya | `github-handle` |
-| Analysis Lead | Mihika | `github-handle` |
-| Visualization Lead | Vaageesh | `github-handle` |
-| Strategy Lead | Gauri | `github-handle` |
-| PPT & Quality Lead | Pratyaksha | `github-handle` |
+| ETL Lead | Shourya | `shourya2006` |
+| Analysis Lead | Mihika | `mihikamathur` |
+| Visualization Lead | Vaageesh | `Vaageesh-Git` |
+| Strategy Lead | Gauri | `gaurimehrotra1623 ` |
+| PPT & Quality Lead | Pratyaksha | `gPratyaksha37` |
 
 > **Note:** Replace all `github-handle` placeholders with actual GitHub usernames. Every member must have visible commits and pull requests.
 
