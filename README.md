@@ -18,12 +18,12 @@
 | Role | Name | GitHub Username |
 |---|---|---|
 | Project Lead | Priyanshu | `PriyanshuCP42` |
-| Data Lead | Preet | `github-handle` |
+| Data Lead | Preet | `preetvardhan10` |
 | ETL Lead | Shourya | `shourya2006` |
 | Analysis Lead | Mihika | `mihikamathur` |
 | Visualization Lead | Vaageesh | `Vaageesh-Git` |
 | Strategy Lead | Gauri | `gaurimehrotra1623 ` |
-| PPT & Quality Lead | Pratyaksha | `gPratyaksha37` |
+| PPT & Quality Lead | Pratyaksha | `Pratyaksha37` |
 
 > **Note:** Replace all `github-handle` placeholders with actual GitHub usernames. Every member must have visible commits and pull requests.
 
@@ -35,11 +35,11 @@ Myntra, India's leading online fashion and lifestyle retailer, operates in a fie
 
 **Core Business Question**
 
-> Which product categories, brands, and customer segments on Myntra offer the highest revenue potential, and how should discount and pricing strategies be optimised to maximise both sales volume and profitability?
+> How can Myntra optimize its product assortment and pricing strategy across different gender categories and sub-categories to maximize value-for-money perception and rating performance?
 
 **Decision Supported**
 
-> This analysis will enable the Category Management team to prioritise high-performing brands and categories for promotional spend, restructure discount tiers for underperforming segments, and align inventory investments with actual customer demand — directly improving gross margin and reducing unsold stock.
+> This analysis will enable stakeholders (Category Managers and Pricing Strategists) to decide which specific product categories require price adjustments (discounts) to improve customer satisfaction ratings and which brands/categories are currently underperforming in terms of review volume versus rating quality.
 
 ---
 
