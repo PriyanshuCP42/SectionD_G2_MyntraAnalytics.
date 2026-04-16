@@ -261,7 +261,7 @@ This table must match evidence in GitHub Insights, PR history, and committed fil
 
 | Team Member | Dataset and Sourcing | ETL and Cleaning | EDA and Analysis | Statistical Analysis | Tableau Dashboard | Report Writing | PPT and Viva |
 |---|---|---|---|---|---|---|---|
-| Priyanshu (Project Lead) | Support | Support | Support | Support | Support | Support | Owner |
+| Priyanshu (Project Lead) | Owner | Support | Support | Support | Support | Support | Owner |
 | Preet (Data Lead) | Owner | Support | Support | Support | Support | Support | Support |
 | Shourya (ETL Lead) | Support | Owner | Support | Support | Support | Support | Support |
 | Mihika (Analysis Lead) | Support | Support | Owner | Owner | Support | Support | Support |
