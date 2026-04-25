@@ -261,13 +261,13 @@ This table must match evidence in GitHub Insights, PR history, and committed fil
 
 | Team Member | Dataset and Sourcing | ETL and Cleaning | EDA and Analysis | Statistical Analysis | Tableau Dashboard | Report Writing | PPT and Viva |
 |---|---|---|---|---|---|---|---|
-| Priyanshu (Project Lead) | Owner | Support | Support | Support | Support | Support | Owner |
-| Preet (Data Lead) | Owner | Support | Support | Support | Support | Support | Support |
-| Shourya (ETL Lead) | Support | Owner | Support | Support | Support | Support | Support |
-| Mihika (Analysis Lead) | Support | Support | Owner | Owner | Support | Support | Support |
-| Vaageesh (Viz Lead) | Support | Support | Support | Support | Owner | Support | Support |
-| Gauri (Strategy Lead) | Support | Support | Support | Support | Support | Owner | Support |
-| Pratyaksha (PPT & Quality Lead) | Support | Support | Support | Support | Support | Owner | Owner |
+| Priyanshu (Project Lead) | ✓ |  |  | ✓ |  |  |  |
+| Preet (Data Lead) |  | ✓ |  |  |  | | |
+| Shourya (ETL Lead) |  | ✓ | ✓ |  |  |  |  |
+| Mihika (Analysis Lead) | ✓ |  |  | ✓ |  |  |  |
+| Vaageesh (Viz Lead) |  |  |  |  | ✓ |  |  |
+| Gauri (Strategy Lead) | ✓ |  | | ✓ |  |  |  |
+| Pratyaksha (PPT & Quality Lead) |  | |  | |  | ✓ | ✓ |
 
 _Declaration: We confirm that the above contribution details are accurate and verifiable through GitHub Insights, PR history, and submitted artifacts._
 
